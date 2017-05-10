@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Libraries simply define lists of completions, categorized by keys. They don't define any criteria for when they should be used; this is the domain of a CodeSense Provider.
+
+-->
+<codesense version="1.0">
+	
+	<set name="olach.com.github.vue.tags">
+		<!-- https://vuejs.org/v2/api/#Built-In-Components -->
+	
+		<!-- Default behavior -->
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s*(?:/?>|[a-zA-Z]+=))|(?:/?[^>]|[^\s/])|$</matched-suffix>
+				<transform-into>(?1::>$0&lt;/${completion}>)</transform-into>
+			</append-dynamic>
+		</behavior>
+		
+		<completion string="component" />
+		<completion string="transition" />
+		<completion string="transition-group" />
+		<completion string="keep-alive" />
+		<completion string="slot" />
+	</set>
+	
+</codesense>

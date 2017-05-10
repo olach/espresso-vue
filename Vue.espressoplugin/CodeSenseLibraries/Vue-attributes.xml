@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CodeSense Libraries simply define lists of completions, categorized by keys. They don't define any criteria for when they should be used; this is the domain of a CodeSense Provider.
+
+-->
+<codesense version="1.0">
+
+	<behavior>
+		<append-dynamic>
+			<matched-suffix>(\s*=)|[^=]</matched-suffix>
+			<transform-into>(?1::="$1"$0)</transform-into>
+		</append-dynamic>
+	</behavior>
+	
+	<set name="com.github.olach.vue.tag.standard-attributes">
+		<!-- https://vuejs.org/v2/api/#Directives -->
+		<completion string="v-text" />
+		<completion string="v-html" />
+		<completion string="v-show" />
+		<completion string="v-if" />
+		<completion string="v-else" />
+		<completion string="v-else-if" />
+		<completion string="v-for" />
+		<completion string="v-on" />
+		<completion string="v-bind" />
+		<completion string="v-model" />
+		<completion string="v-pre" />
+		<completion string="v-cloak" />
+		<completion string="v-once" />
+	</set>
+	
+	<set name="com.github.olach.vue.tag.special-attributes">
+		<!-- https://vuejs.org/v2/api/#Special-Attributes -->
+		<completion string=":key" />
+		<completion string="ref" />
+		<completion string="slot" />
+	</set>
+	
+	<set name="com.macrabbit.html.tag.component.attributes">
+		<!-- https://vuejs.org/v2/api/#component -->
+		<completion string=":is" />
+		<completion string="inline-template" />
+	</set>
+	
+</codesense>
