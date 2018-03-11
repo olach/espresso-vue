@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	
+    <language id="olach.com.github.Vue">
+		<name>Vue</name>
+		<syntax-name>language-root.html.with-vue</syntax-name>
+		
+		<detectors>
+			<extension>vue</extension>
+		</detectors>
+	</language>
+	
+</settings>
