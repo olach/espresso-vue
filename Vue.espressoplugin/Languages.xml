@@ -3,7 +3,7 @@
 	
     <language id="olach.com.github.Vue">
 		<name>Vue</name>
-		<syntax-name>language-root.html.with-vue</syntax-name>
+		<syntax-name>language-root.xml.vue</syntax-name>
 		
 		<detectors>
 			<extension>vue</extension>

@@ -12,9 +12,13 @@ module.exports = {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 p {
 	font-size: 2em;
 	text-align: center;
+	
+	& .green {
+		color: green;
+	}
 }
 </style>

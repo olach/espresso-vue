@@ -1,6 +1,254 @@
 <?xml version="1.0"?>
-<syntax name="language-root.html.with-vue">
+<syntax name="language-root.xml.vue">
 	<zones>
-		<include syntax="language-root.html" />
+		
+		<!-- Embedded HTML: <template></template> -->
+		<zone name="embedded-html.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:template)[\s>])</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:template))(>)</expression>
+				<capture number="0" name="tag.close.x-template.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-template.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:template))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.html">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:template)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.html"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Embedded SCSS/Postcss: <style lang="scss|postcss"></style> -->
+		<zone name="embedded-style.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:style)\s(?:[^>]*?\s)*?(?i:lang=["|'](?:scss|postcss)["|']))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:style))(>)</expression>
+				<capture number="0" name="tag.close.x-style.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-style.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:style))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.css.scss">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:style)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.css.scss"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Embedded LESS: <style lang="less"></style> -->
+		<zone name="embedded-style.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:style)\s(?:[^>]*?\s)*?(?i:lang=["|']less["|']))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:style))(>)</expression>
+				<capture number="0" name="tag.close.x-style.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-style.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:style))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.css.less">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:style)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.css.less"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Embedded CSS: <style></style> -->
+		<zone name="embedded-style.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:style)[\s>])</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:style))(>)</expression>
+				<capture number="0" name="tag.close.x-style.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-style.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:style))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.css">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:style)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.css"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Embedded CoffeeScript: <script lang="coffee"></script> -->
+		<zone name="embedded-script.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:script)\s(?:[^>]*?\s)*?(?i:lang=["|']coffee["|']))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:script))(>)</expression>
+				<capture number="0" name="tag.close.x-script.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-script.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:script))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.coffeescript">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:script)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.coffeescript"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Embedded JS: <script></script> -->
+		<zone name="embedded-script.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:script)[\s>])</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:script))(>)</expression>
+				<capture number="0" name="tag.close.x-script.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-script.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:script))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.js">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:script)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.js"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
+		<!-- Everything else is identical to normal XML -->
+		<include syntax="language-root.xml"/>
 	</zones>
 </syntax>

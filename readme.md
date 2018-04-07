@@ -1,9 +1,10 @@
 # Vue.js for Espresso
-This is a plugin for MacRabbit's [Espresso](http://espressoapp.com) code editor with support for [Vue.js](https://vuejs.org).
+This is a plugin for MacRabbit's [Espresso](https://espressoapp.com) code editor with support for [Vue.js](https://vuejs.org).
 
 ## Features
 
-This Espresso plugin adds autocompletion of Vue.js template syntax, such as `v-bind` and `v-if`.
+- Syntax highlighting of Vue Single File Components (HTML, CSS, SCSS, Less, JS, CoffeScript).
+- Autocompletion of Vue template syntax, such as `v-bind` and `v-if`.
 
 ## Installation
 
