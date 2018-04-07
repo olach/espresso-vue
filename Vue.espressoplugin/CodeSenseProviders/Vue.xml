@@ -24,4 +24,29 @@ CodeSense Providers map contexts in a document to possible completions. The actu
 		<require-suffix>(\s|=|>|^)</require-suffix>
 	</provider>
 	
+	<!-- Vue Single File Components -->
+	<provider>
+		<selector>language-root.vue *, language-root.vue tag.open.xml, language-root.vue tag.self-closing.xml</selector>
+		<completions>olach.com.github.vue-sfc.tags</completions>
+		<complete-match capture="2">(&lt;)([a-zA-Z0-9-]*)</complete-match>
+		<require-suffix>(\s|>|^)</require-suffix>
+	</provider>
+	
+	<!-- Vue Single File Components Tag attributes -->
+	<provider>
+		<selector>language-root.vue tag.open.xml:has-child(name:capture(tag)) > attribute-name, language-root.vue tag.open.xml:has-child(name:capture(tag)) > punctuation.definition.end, language-root.vue tag.open.xml:has-child(name:capture(tag))</selector>
+		<completions>com.github.olach.vue-sfc.tag.${tag}.attributes</completions>
+		<completions>com.github.olach.vue-sfc.tag.standard-attributes</completions>
+		<completions>com.github.olach.vue-sfc.tag.special-attributes</completions>
+		<complete-match capture="2">(\s)([a-zA-Z0-9-:]*)</complete-match>
+		<require-suffix>(\s|=|>|^)</require-suffix>
+	</provider>
+	
+	<!-- Vue Single File Components Tag attribute values for specific elements -->
+	<provider>
+		<selector>language-root.vue tag.open.xml:has-child(name:capture(tag)) > attribute-name:capture(attribute) + punctuation.separator + string > punctuation.end</selector>
+		<completions>com.github.olach.vue-sfc.tag.${tag}.attribute-values.${attribute}</completions>
+		<complete-match capture="2">("|')([a-zA-Z0-9._/-]*)</complete-match>
+	</provider>
+	
 </codesense>

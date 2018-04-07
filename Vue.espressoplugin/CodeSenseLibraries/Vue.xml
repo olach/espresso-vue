@@ -24,4 +24,20 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="slot" />
 	</set>
 	
+	<set name="olach.com.github.vue-sfc.tags">
+		<!-- https://vuejs.org/v2/guide/single-file-components.html -->
+	
+		<!-- Default behavior -->
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s*(?:/?>|[a-zA-Z]+=))|(?:/?[^>]|[^\s/])|$</matched-suffix>
+				<transform-into>(?1::>$0&lt;/${completion}>)</transform-into>
+			</append-dynamic>
+		</behavior>
+		
+		<completion string="template" />
+		<completion string="style" />
+		<completion string="script" />
+	</set>
+	
 </codesense>

@@ -43,4 +43,19 @@ CodeSense Libraries simply define lists of completions, categorized by keys. The
 		<completion string="inline-template" />
 	</set>
 	
+	<set name="com.github.olach.vue-sfc.tag.standard-attributes">
+		<!-- https://vue-loader.vuejs.org/en/start/spec.html -->
+		<completion string="lang" />
+		<completion string="src" />
+	</set>
+	
+	<set name="com.github.olach.vue-sfc.tag.style.attributes">
+		<!-- https://vue-loader.vuejs.org/en/start/spec.html#style -->
+		<behavior>
+			<append-static></append-static>
+		</behavior>
+		
+		<completion string="module" />
+		<completion string="scoped" />
+	</set>
 </codesense>
