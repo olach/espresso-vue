@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<action-recipes>
+	
+	<snippet id="olach.com.github.vue.interpolation" category="hidden">
+		<title>{{ }}</title>
+		<text>{{ $1 }}</text>
+		<text-trigger key-equivalent="{">{</text-trigger>
+		<language-context>html.with-vue</language-context>
+	</snippet>
+	
+</action-recipes>
