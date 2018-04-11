@@ -125,6 +125,48 @@
 			</subzones>
 		</zone>
 		
+		<!-- Embedded Stylus: <style lang="stylus"></style> -->
+		<!-- Plugin: https://github.com/aljs/Stylus.sugar -->
+		<zone name="embedded-style.xml.vue">
+			<starts-with>
+				<expression>(?=&lt;(?i:style)\s(?:[^>]*?\s)*?(?i:lang=["|']stylus["|']))</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(&lt;/)((?i:style))(>)</expression>
+				<capture number="0" name="tag.close.x-style.xml"/>
+				<capture number="1" name="punctuation.definition.begin"/>
+				<capture number="2" name="entity.name"/>
+				<capture number="3" name="punctuation.definition.end"/>
+			</ends-with>
+			<subzones>
+				<zone name="tag.open.x-style.xml">
+					<starts-with>
+						<expression>(&lt;)((?i:style))</expression>
+						<capture number="1" name="punctuation.definition.begin"/>
+						<capture number="2" name="entity.name"/>
+					</starts-with>
+					<ends-with>
+						<expression>></expression>
+						<capture number="0" name="punctuation.definition.end"/>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.xml" collection="tag-attributes"/>
+					</subzones>
+				</zone>
+				<zone name="embedded.language-root.css.stylus">
+					<starts-with>
+						<expression>(?&lt;=>)</expression>
+					</starts-with>
+					<ends-with>
+						<expression>(?=&lt;/(?i:style)>)</expression>
+					</ends-with>
+					<subzones>
+						<include syntax="language-root.stylus"/>
+					</subzones>
+				</zone>
+			</subzones>
+		</zone>
+		
 		<!-- Embedded CSS: <style></style> -->
 		<zone name="embedded-style.xml.vue">
 			<starts-with>
