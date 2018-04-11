@@ -4,6 +4,7 @@ This is a plugin for MacRabbit's [Espresso](https://espressoapp.com) code editor
 ## Features
 
 - Syntax highlighting of Vue Single File Components (HTML, CSS, SCSS, Less, [Stylus](https://github.com/aljs/Stylus.sugar), JS, CoffeScript).
+- Syntax highlighting of text interpolations.
 - Autocompletion of Vue template syntax, such as `v-bind` and `v-if`.
 
 ## Installation

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<syntax name="language-root.html.with-vue">
+	<zones>
+		<include collection="vue-interpolations" />
+		<include syntax="language-root.html" />
+	</zones>
+	
+	<library>
+		<collection name="vue-interpolations">
+			<zone name="embedded.expression.comment.block.vue">
+				<starts-with>
+					<expression>{{{?!</expression>
+					<capture number="0" name="punctuation.definition.begin"/>
+				</starts-with>
+				<ends-with>
+					<expression>}}}?</expression>
+					<capture number="0" name="punctuation.definition.end"/>
+				</ends-with>
+			</zone>
+			
+			<zone name="embedded.expression.vue">
+				<starts-with>
+					<expression>{{{?(?!!)</expression>
+					<capture number="0" name="punctuation.definition.begin"/>
+				</starts-with>
+				<ends-with>
+					<expression>}}}?</expression>
+					<capture number="0" name="punctuation.definition.end"/>
+				</ends-with>
+				<subzones>
+					<zone name="embedded.language-root.js">
+						<starts-with>
+							<expression>(?&lt;={{)</expression>
+						</starts-with>
+						<ends-with>
+							<expression>(?=}})</expression>
+						</ends-with>
+						<subzones>
+							<include syntax="language-root.js"/>
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+		</collection>
+	</library>
+</syntax>

@@ -29,7 +29,7 @@
 						<include syntax="language-root.xml" collection="tag-attributes"/>
 					</subzones>
 				</zone>
-				<zone name="embedded.language-root.html">
+				<zone name="embedded.language-root.html.with-vue">
 					<starts-with>
 						<expression>(?&lt;=>)</expression>
 					</starts-with>
@@ -37,7 +37,7 @@
 						<expression>(?=&lt;/(?i:template)>)</expression>
 					</ends-with>
 					<subzones>
-						<include syntax="language-root.html"/>
+						<include syntax="language-root.html.with-vue"/>
 					</subzones>
 				</zone>
 			</subzones>
